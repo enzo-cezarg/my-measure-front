@@ -5,6 +5,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { AxiosError } from 'axios';
 import { api } from '../../api/client';
 import { loginSchema, type LoginFormData } from './loginSchema';
+import { useAuth } from '../../hooks/useAuth';
 
 export function Login() {
   const {
@@ -16,6 +17,7 @@ export function Login() {
   });
 
   const [erroApi, setErroApi] = useState<string | null>(null);
+  const { refreshUser } = useAuth();
   const navigate = useNavigate();
 
   async function onSubmit(data: LoginFormData) {
@@ -23,6 +25,7 @@ export function Login() {
 
     try {
       await api.post('/auth/login', data);
+      await refreshUser();
       navigate('/dashboard');
     } catch (err) {
       const mensagem =
@@ -38,7 +41,7 @@ export function Login() {
     <div className="min-h-screen flex items-center justify-center bg-primary px-4">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full max-w-md bg-white px-12 py-16 rounded-lg shadow-md space-y-4"
+        className="w-full max-w-md bg-white-bg px-12 py-16 rounded-lg shadow-md space-y-4"
       >
 
         <center>
