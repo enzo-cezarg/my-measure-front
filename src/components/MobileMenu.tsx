@@ -53,7 +53,7 @@ export function MobileMenu({ aberto, onClose }: MobileMenuProps) {
 
         <button
           onClick={handleLogout}
-          className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-error mt-auto border-t border-tertiary-200"
+          className="flex items-center gap-3 px-4 py-3 text-sm font-medium text-error cursor-pointer mt-auto border-t border-tertiary-200"
         >
           <LogOut size={18} />
           Sair

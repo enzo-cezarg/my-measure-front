@@ -41,18 +41,18 @@ export function Dashboard() {
       <p className="text-sm text-tertiary-500">Página Inicial</p>
       <h1 className="text-xl font-semibold text-tertiary-900 mt-1">Olá, {user?.name}!</h1>
 
-      <div className="bg-white border border-tertiary-200 rounded-lg mt-4 p-4">
-        <p className="text-xs text-tertiary-500 mb-4">Dashboard</p>
+      <div className="bg-white border-2 border-tertiary-500 rounded-lg mt-4 p-4">
+        <p className="text-md text-tertiary-500 font-medium mb-4">Dashboard</p>
 
         {carregando ? (
           <p className="text-center text-tertiary-500 py-12">Carregando...</p>
         ) : !medidas ? (
           <div className="flex flex-col items-center justify-center py-12 gap-3">
             <Ruler size={40} className="text-tertiary-700 -rotate-45" />
-            <p className="text-sm text-tertiary-500">Sem medidas cadastradas.</p>
+            <p className="text-sm text-tertiary-700">Sem medidas cadastradas.</p>
             <button
               onClick={() => navigate('/medidas')}
-              className="bg-tertiary-900 hover:bg-tertiary-700 text-white text-sm px-4 py-2 rounded-md transition-colors"
+              className="bg-tertiary-900 hover:bg-tertiary-700 cursor-pointer text-white text-sm px-4 py-2 rounded-md transition-colors"
             >
               Cadastrar
             </button>
@@ -60,16 +60,16 @@ export function Dashboard() {
         ) : (
           <div className="flex flex-col md:flex-row gap-4">
             <div className="md:w-64">
-              <label className="text-xs text-tertiary-500 block mb-1">Código de acesso:</label>
-              <div className="flex gap-2">
+              <label className="text-sm text-tertiary-700 font-medium block mb-1">Código de acesso:</label>
+              <div className="flex gap-0.5">
                 <input
                   readOnly
                   value={medidas.codigoAcesso}
-                  className="flex-1 bg-white border border-tertiary-300 rounded-md px-3 py-2 text-sm text-center"
+                  className="flex-1 bg-white border-2 border-tertiary-500 rounded-md rounded-r-none px-3 py-2 text-sm text-center"
                 />
                 <button
                   onClick={handleCopiar}
-                  className="bg-tertiary-900 hover:bg-tertiary-700 text-white px-3 rounded-md transition-colors"
+                  className="bg-tertiary-700 hover:bg-tertiary-900 cursor-pointer text-white px-3 rounded-md rounded-l-none transition-colors"
                   aria-label="Copiar código"
                 >
                   {copiado ? <Check size={16} /> : <Copy size={16} />}
@@ -94,9 +94,9 @@ export function Dashboard() {
 
 function CampoMedida({ label, valor }: { label: string; valor: string }) {
   return (
-    <div className="flex justify-between bg-white border border-tertiary-200 rounded-md px-3 py-2 text-sm">
-      <span className="text-tertiary-500">{label}:</span>
-      <span className="text-tertiary-900 font-medium">{valor}</span>
+    <div className="flex justify-between bg-white border-2 border-tertiary-500 rounded-md py-2 px-3 text-md lg:text-lg">
+      <span className="text-tertiary-900 font-heading">{label}:</span>
+      <span className="text-tertiary-900 font-heading">{valor}</span>
     </div>
   );
 }

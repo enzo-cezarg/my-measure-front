@@ -9,7 +9,7 @@ const links = [
 
 export function Sidebar() {
   return (
-    <aside className="hidden md:flex md:flex-col w-56 p-1 bg-white-bg m-2 rounded-lg drop-shadow-sm">
+    <aside className="hidden md:flex md:flex-col w-56 p-1 bg-white-bg m-2 mr-0 rounded-lg drop-shadow-sm">
       {links.map(({ to, label, icon: Icon }) => (
         <NavLink
           key={to}
