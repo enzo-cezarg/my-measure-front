@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { medidaSchema, type MedidaFormData } from './medidaSchema';
+import { bloquearNaoNumerico } from './inputNumerico';
 
 type MedidaFormInput = z.input<typeof medidaSchema>;
 
@@ -49,6 +50,7 @@ export function MedidaFormModal({ onCancel, onSubmit }: MedidaFormModalProps) {
                     id={name}
                     type="text"
                     inputMode="decimal"
+                    onKeyDown={bloquearNaoNumerico}
                     {...register(name)}
                     className="w-full rounded-md border border-tertiary-700/25 pl-3 pr-10 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-tertiary-500"
                   />
